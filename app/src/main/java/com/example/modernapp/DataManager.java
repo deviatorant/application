@@ -4,119 +4,143 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe qui gère les données de l'application
- * Singleton pour un accès global aux données
+ * DataManager class to manage app data
+ * Singleton pattern implementation for global data access
  */
 public class DataManager {
+    // Singleton instance
     private static DataManager instance;
-    private List<Item> items;
-    private String username;
-    private String password;
-    private boolean darkModeEnabled;
+    
+    // Data storage
+    private List<ItemModel> itemList;
+    private String userName;
+    private String userEmail;
+    private String userBio;
+    private boolean darkThemeEnabled;
     private boolean notificationsEnabled;
-    private String selectedLanguage;
-
-    // Constructeur privé pour Singleton
+    private boolean soundEnabled;
+    
+    // Private constructor for Singleton pattern
     private DataManager() {
-        initializeData();
+        // Initialize with default data
+        itemList = new ArrayList<>();
+        populateDefaultItems();
+        
+        // Default user settings
+        userName = "";
+        userEmail = "";
+        userBio = "";
+        darkThemeEnabled = false;
+        notificationsEnabled = true;
+        soundEnabled = true;
     }
-
-    // Méthode pour obtenir l'instance unique
+    
+    // Get Singleton instance
     public static synchronized DataManager getInstance() {
         if (instance == null) {
             instance = new DataManager();
         }
         return instance;
     }
-
-    // Initialisation des données
-    private void initializeData() {
-        // Valeurs par défaut
-        username = "";
-        password = "";
-        darkModeEnabled = false;
-        notificationsEnabled = true;
-        selectedLanguage = "fr";
-
-        // Liste d'éléments pour le RecyclerView
-        items = new ArrayList<>();
-        items.add(new Item("Élément 1", "Description détaillée de l'élément 1"));
-        items.add(new Item("Élément 2", "Description détaillée de l'élément 2"));
-        items.add(new Item("Élément 3", "Description détaillée de l'élément 3"));
-        items.add(new Item("Élément 4", "Description détaillée de l'élément 4"));
-        items.add(new Item("Élément 5", "Description détaillée de l'élément 5"));
-        items.add(new Item("Élément 6", "Description détaillée de l'élément 6"));
-        items.add(new Item("Élément 7", "Description détaillée de l'élément 7"));
-        items.add(new Item("Élément 8", "Description détaillée de l'élément 8"));
-        items.add(new Item("Élément 9", "Description détaillée de l'élément 9"));
-        items.add(new Item("Élément 10", "Description détaillée de l'élément 10"));
+    
+    // Populate with default items for the list
+    private void populateDefaultItems() {
+        itemList.add(new ItemModel("Item 1", "This is the first item in our modern Android app.", android.R.drawable.ic_menu_compass));
+        itemList.add(new ItemModel("Item 2", "A beautifully designed application with modern UI elements.", android.R.drawable.ic_menu_gallery));
+        itemList.add(new ItemModel("Item 3", "Uses RecyclerView with custom adapter for efficient list display.", android.R.drawable.ic_menu_slideshow));
+        itemList.add(new ItemModel("Item 4", "Material Design components for a cohesive user experience.", android.R.drawable.ic_menu_view));
+        itemList.add(new ItemModel("Item 5", "Data management through singleton pattern for global access.", android.R.drawable.ic_menu_info_details));
     }
-
-    // Getters et Setters
-    public List<Item> getItems() {
-        return items;
+    
+    // Get all items
+    public List<ItemModel> getItems() {
+        return itemList;
     }
-
-    public void addItem(Item item) {
-        items.add(item);
+    
+    // Add a new item
+    public void addItem(ItemModel item) {
+        itemList.add(item);
     }
-
-    public String getUsername() {
-        return username;
+    
+    // Remove an item
+    public void removeItem(int position) {
+        if (position >= 0 && position < itemList.size()) {
+            itemList.remove(position);
+        }
     }
-
-    public void setUsername(String username) {
-        this.username = username;
+    
+    // User profile methods
+    public String getUserName() {
+        return userName;
     }
-
-    public String getPassword() {
-        return password;
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    
+    public String getUserEmail() {
+        return userEmail;
     }
-
-    public boolean isDarkModeEnabled() {
-        return darkModeEnabled;
+    
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
-
-    public void setDarkModeEnabled(boolean darkModeEnabled) {
-        this.darkModeEnabled = darkModeEnabled;
+    
+    public String getUserBio() {
+        return userBio;
     }
-
+    
+    public void setUserBio(String userBio) {
+        this.userBio = userBio;
+    }
+    
+    // Settings methods
+    public boolean isDarkThemeEnabled() {
+        return darkThemeEnabled;
+    }
+    
+    public void setDarkThemeEnabled(boolean darkThemeEnabled) {
+        this.darkThemeEnabled = darkThemeEnabled;
+    }
+    
     public boolean isNotificationsEnabled() {
         return notificationsEnabled;
     }
-
+    
     public void setNotificationsEnabled(boolean notificationsEnabled) {
         this.notificationsEnabled = notificationsEnabled;
     }
-
-    public String getSelectedLanguage() {
-        return selectedLanguage;
+    
+    public boolean isSoundEnabled() {
+        return soundEnabled;
     }
-
-    public void setSelectedLanguage(String selectedLanguage) {
-        this.selectedLanguage = selectedLanguage;
+    
+    public void setSoundEnabled(boolean soundEnabled) {
+        this.soundEnabled = soundEnabled;
     }
-
-    // Classe interne pour les éléments de la liste
-    public static class Item {
+    
+    // Inner class for item data model
+    public static class ItemModel {
         private String title;
         private String description;
-
-        public Item(String title, String description) {
+        private int iconResource;
+        
+        public ItemModel(String title, String description, int iconResource) {
             this.title = title;
             this.description = description;
+            this.iconResource = iconResource;
         }
-
+        
         public String getTitle() {
             return title;
         }
-
+        
         public String getDescription() {
             return description;
+        }
+        
+        public int getIconResource() {
+            return iconResource;
         }
     }
 }

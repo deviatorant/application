@@ -4,83 +4,80 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
-
 import java.util.List;
 
 /**
- * Adaptateur pour le RecyclerView, permettant d'afficher la liste d'éléments
+ * Adapter for the RecyclerView to display items
  */
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
-
-    private final List<DataManager.Item> items;
-    private final Context context;
-    private final OnItemClickListener listener;
-
-    // Interface pour gérer les clics sur les éléments
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+    
+    private Context context;
+    private List<DataManager.ItemModel> itemList;
+    private OnItemClickListener listener;
+    
+    // Interface for item click events
     public interface OnItemClickListener {
-        void onItemClick(DataManager.Item item, int position);
-        void onActionButtonClick(DataManager.Item item, int position);
+        void onItemClick(int position);
     }
-
-    // Constructeur
-    public ItemAdapter(Context context, List<DataManager.Item> items, OnItemClickListener listener) {
+    
+    public ItemAdapter(Context context, List<DataManager.ItemModel> itemList) {
         this.context = context;
-        this.items = items;
+        this.itemList = itemList;
+    }
+    
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
-
+    
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
-        return new ItemViewHolder(view);
+        return new ViewHolder(view);
     }
-
+    
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        DataManager.Item item = items.get(position);
-        holder.bind(item, position, listener);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        DataManager.ItemModel item = itemList.get(position);
+        
+        holder.imageViewItem.setImageResource(item.getIconResource());
+        holder.textViewTitle.setText(item.getTitle());
+        holder.textViewDescription.setText(item.getDescription());
     }
-
+    
     @Override
     public int getItemCount() {
-        return items.size();
+        return itemList.size();
     }
-
-    // ViewHolder pour les éléments de la liste
-    static class ItemViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView;
-        TextView descriptionTextView;
-        MaterialButton actionButton;
-
-        ItemViewHolder(@NonNull View itemView) {
+    
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageViewItem;
+        TextView textViewTitle;
+        TextView textViewDescription;
+        
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.itemTitle);
-            descriptionTextView = itemView.findViewById(R.id.itemDescription);
-            actionButton = itemView.findViewById(R.id.itemActionButton);
-        }
-
-        void bind(final DataManager.Item item, final int position, final OnItemClickListener listener) {
-            titleTextView.setText(item.getTitle());
-            descriptionTextView.setText(item.getDescription());
-
-            // Gestion des clics sur l'élément entier
-            itemView.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onItemClick(item, position);
-                }
-            });
-
-            // Gestion des clics sur le bouton d'action
-            actionButton.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onActionButtonClick(item, position);
+            
+            imageViewItem = itemView.findViewById(R.id.imageViewItem);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            
+            // Set up click listener
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
                 }
             });
         }

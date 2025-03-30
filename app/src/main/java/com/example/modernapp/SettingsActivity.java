@@ -2,64 +2,123 @@ package com.example.modernapp;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.switchmaterial.SwitchMaterial;
-
-/**
- * Activité des paramètres de l'application
- */
 public class SettingsActivity extends AppCompatActivity {
 
-    private SwitchMaterial darkModeSwitch;
-    private SwitchMaterial notificationsSwitch;
-    private RadioGroup languageRadioGroup;
-    private RadioButton frenchOption;
-    private RadioButton englishOption;
-    private DataManager dataManager;
+    private Switch darkModeSwitch;
+    private Switch notificationsSwitch;
+    private Switch vibrationSwitch;
+    private Switch soundSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Configuration de la toolbar
+        // Set up toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Enable back button in the toolbar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(R.string.settings_title);
+            getSupportActionBar().setTitle(R.string.settings);
         }
 
-        // Récupération du gestionnaire de données
-        dataManager = DataManager.getInstance();
-
-        // Initialisation des vues
+        // Initialize switches
         darkModeSwitch = findViewById(R.id.darkModeSwitch);
-        notificationsSwitch = findViewById(R.id.enableNotificationsSwitch);
-        languageRadioGroup = findViewById(R.id.languageRadioGroup);
-        frenchOption = findViewById(R.id.languageOptionFrench);
-        englishOption = findViewById(R.id.languageOptionEnglish);
+        notificationsSwitch = findViewById(R.id.notificationsSwitch);
+        vibrationSwitch = findViewById(R.id.vibrationSwitch);
+        soundSwitch = findViewById(R.id.soundSwitch);
 
-        // Chargement des paramètres existants
-        loadSettings();
+        // Set initial states (in a real app, these would come from SharedPreferences)
+        darkModeSwitch.setChecked(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES);
+        notificationsSwitch.setChecked(true);
+        vibrationSwitch.setChecked(true);
+        soundSwitch.setChecked(true);
 
-        // Configuration des listeners pour les changements de paramètres
-        setupSettingsListeners();
+        // Set listeners
+        darkModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                toggleDarkMode(isChecked);
+            }
+        });
+
+        notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                toggleNotifications(isChecked);
+            }
+        });
+
+        vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                toggleVibration(isChecked);
+            }
+        });
+
+        soundSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                toggleSound(isChecked);
+            }
+        });
+    }
+
+    private void toggleDarkMode(boolean enableDarkMode) {
+        // In a real app, you would save this setting to SharedPreferences
+        if (enableDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            Utils.showToast(this, "Dark mode enabled");
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Utils.showToast(this, "Dark mode disabled");
+        }
+    }
+
+    private void toggleNotifications(boolean enableNotifications) {
+        // In a real app, you would save this setting to SharedPreferences
+        Utils.showToast(this, enableNotifications ? 
+                "Notifications enabled" : "Notifications disabled");
+        
+        // Update the state of other switches based on notification setting
+        if (!enableNotifications) {
+            vibrationSwitch.setChecked(false);
+            soundSwitch.setChecked(false);
+            vibrationSwitch.setEnabled(false);
+            soundSwitch.setEnabled(false);
+        } else {
+            vibrationSwitch.setEnabled(true);
+            soundSwitch.setEnabled(true);
+        }
+    }
+
+    private void toggleVibration(boolean enableVibration) {
+        // In a real app, you would save this setting to SharedPreferences
+        Utils.showToast(this, enableVibration ? 
+                "Vibration enabled" : "Vibration disabled");
+    }
+
+    private void toggleSound(boolean enableSound) {
+        // In a real app, you would save this setting to SharedPreferences
+        Utils.showToast(this, enableSound ? 
+                "Sound enabled" : "Sound disabled");
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            // Retour à l'activité précédente avec animation
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            // Custom back animation
+            Utils.finishWithAnimation(this, R.anim.fade_in, R.anim.fade_out);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -67,70 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        // Animation de transition lors du retour
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
-    /**
-     * Charge les paramètres existants
-     */
-    private void loadSettings() {
-        // Mode sombre
-        darkModeSwitch.setChecked(dataManager.isDarkModeEnabled());
-
-        // Notifications
-        notificationsSwitch.setChecked(dataManager.isNotificationsEnabled());
-
-        // Langue
-        String language = dataManager.getSelectedLanguage();
-        if ("en".equals(language)) {
-            englishOption.setChecked(true);
-        } else {
-            frenchOption.setChecked(true);
-        }
-    }
-
-    /**
-     * Configure les listeners pour les changements de paramètres
-     */
-    private void setupSettingsListeners() {
-        // Mode sombre
-        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            dataManager.setDarkModeEnabled(isChecked);
-            applyDarkMode(isChecked);
-        });
-
-        // Notifications
-        notificationsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            dataManager.setNotificationsEnabled(isChecked);
-            if (isChecked) {
-                Toast.makeText(this, "Notifications activées", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Notifications désactivées", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Langue
-        languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.languageOptionEnglish) {
-                dataManager.setSelectedLanguage("en");
-                Toast.makeText(this, "Language set to English", Toast.LENGTH_SHORT).show();
-            } else {
-                dataManager.setSelectedLanguage("fr");
-                Toast.makeText(this, "Langue définie sur Français", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    /**
-     * Applique le mode sombre
-     */
-    private void applyDarkMode(boolean enabled) {
-        if (enabled) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+        // Custom back animation
+        Utils.finishWithAnimation(this, R.anim.fade_in, R.anim.fade_out);
     }
 }
