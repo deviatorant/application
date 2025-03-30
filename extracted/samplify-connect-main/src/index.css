@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 33% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 217 92% 95%;
+    --accent-foreground: 221 83% 53%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 92% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 92% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 213 27% 84%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Glass morphism styles */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-black/10 backdrop-blur-md border border-white/10;
+  }
+  
+  /* Neomorphic elements */
+  .neomorph {
+    @apply shadow-[6px_6px_12px_#d9d9d9,-6px_-6px_12px_#ffffff] bg-[#f0f0f0];
+  }
+  
+  /* Custom transitions */
+  .page-transition-enter {
+    @apply opacity-0;
+  }
+  
+  .page-transition-enter-active {
+    @apply opacity-100 transition-opacity duration-300;
+  }
+  
+  .page-transition-exit {
+    @apply opacity-100;
+  }
+  
+  .page-transition-exit-active {
+    @apply opacity-0 transition-opacity duration-300;
+  }
+  
+  /* Improved button styles */
+  .btn-primary {
+    @apply rounded-full bg-medical-500 text-white px-6 py-3 font-medium 
+           transition-all duration-300 hover:bg-medical-600 
+           active:scale-[0.98] focus:outline-none focus:ring-2 
+           focus:ring-medical-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply rounded-full bg-secondary text-secondary-foreground px-6 py-3 
+           font-medium transition-all duration-300 hover:bg-secondary/80
+           active:scale-[0.98] focus:outline-none focus:ring-2 
+           focus:ring-secondary focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply rounded-full bg-transparent border border-medical-500 text-medical-500 
+           px-6 py-3 font-medium transition-all duration-300 hover:bg-medical-50
+           active:scale-[0.98] focus:outline-none focus:ring-2 
+           focus:ring-medical-500 focus:ring-offset-2;
+  }
+  
+  /* Card styles */
+  .med-card {
+    @apply bg-white rounded-2xl shadow-sm p-6 border border-border/50
+           transition-all duration-300 hover:shadow-md;
+  }
+
+  /* SIHATI custom styles */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-teal-500 to-blue-600 bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-sihati {
+    @apply bg-gradient-to-r from-sihati-teal-500 to-sihati-blue-600;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-to-br from-white to-blue-50 shadow-md;
+  }
+  
+  /* RTL support for Arabic */
+  .rtl {
+    direction: rtl;
+  }
+  
+  /* Luxury card styles */
+  .luxury-card {
+    @apply bg-gradient-to-br from-white via-white to-blue-50 
+           border border-blue-100 rounded-2xl shadow-sm p-6
+           hover:shadow-md transition-all duration-300;
+  }
+}
+
+/* RTL Support */
+.rtl button,
+.rtl [role="button"] {
+  direction: rtl;
+}
+
+.rtl .flex {
+  display: flex;
+}
+
+.rtl .flex-row {
+  flex-direction: row-reverse;
+}
+
+.rtl .mr-1,
+.rtl .mr-2,
+.rtl .mr-3,
+.rtl .mr-4 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+.rtl .ml-1,
+.rtl .ml-2,
+.rtl .ml-3,
+.rtl .ml-4 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+.rtl .space-x-1 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-2 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-3 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Fix right-to-left content positioning */
+.rtl .text-right {
+  text-align: left;
+}
+
+.rtl .text-left {
+  text-align: right;
+}
+
+/* Fix icon positioning in RTL */
+.rtl svg + span,
+.rtl span + svg {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}

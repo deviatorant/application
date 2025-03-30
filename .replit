@@ -19,6 +19,10 @@ args = "Android App"
 task = "workflow.run"
 args = "android_app_execution"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Android App Build"
+
 [[workflows.workflow]]
 name = "Android App"
 author = "agent"
@@ -47,6 +51,20 @@ task = "packager.installForAll"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "./gradlew installDebug && adb shell am start -n com.example.modernapp/.MainActivity"
+
+[[workflows.workflow]]
+name = "Android App Build"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "./gradlew :app:assembleDebug --info"
 
 [deployment]
 run = ["sh", "-c", "./gradlew :app:assembleDebug && ./gradlew :app:installDebug && ./gradlew :app:run"]
