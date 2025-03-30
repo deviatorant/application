@@ -3,6 +3,9 @@ package com.example.modernapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Data manager class for handling app preferences and data
  */
@@ -15,6 +18,33 @@ public class DataManager {
 
     private static DataManager instance;
     private final SharedPreferences preferences;
+    
+    /**
+     * Model class for items to be displayed in lists
+     */
+    public static class ItemModel {
+        private int iconResource;
+        private String title;
+        private String description;
+        
+        public ItemModel(int iconResource, String title, String description) {
+            this.iconResource = iconResource;
+            this.title = title;
+            this.description = description;
+        }
+        
+        public int getIconResource() {
+            return iconResource;
+        }
+        
+        public String getTitle() {
+            return title;
+        }
+        
+        public String getDescription() {
+            return description;
+        }
+    }
 
     /**
      * Private constructor
@@ -108,5 +138,23 @@ public class DataManager {
      */
     public String getUserEmail() {
         return preferences.getString(KEY_USER_EMAIL, "john.doe@example.com");
+    }
+    
+    /**
+     * Gets a list of sample items for demonstration purposes
+     *
+     * @return a list of sample items
+     */
+    public List<ItemModel> getSampleItems() {
+        List<ItemModel> items = new ArrayList<>();
+        
+        // Add sample items
+        items.add(new ItemModel(android.R.drawable.ic_menu_camera, "Photos", "Access and manage your photos"));
+        items.add(new ItemModel(android.R.drawable.ic_menu_call, "Contacts", "View and edit your contacts"));
+        items.add(new ItemModel(android.R.drawable.ic_menu_agenda, "Calendar", "Schedule and manage events"));
+        items.add(new ItemModel(android.R.drawable.ic_menu_gallery, "Gallery", "Browse your media files"));
+        items.add(new ItemModel(android.R.drawable.ic_menu_send, "Messages", "Send and receive messages"));
+        
+        return items;
     }
 }

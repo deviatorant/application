@@ -56,11 +56,12 @@
                         android:text="Name"
                         android:textAppearance="@style/Text.Title" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/profileNameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:inputType="textPersonName"
                         android:textAppearance="@style/Text.Body"
                         tools:text="John Doe" />
 
@@ -71,11 +72,12 @@
                         android:text="Email"
                         android:textAppearance="@style/Text.Title" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/profileEmailTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:inputType="textEmailAddress"
                         android:textAppearance="@style/Text.Body"
                         tools:text="john.doe@example.com" />
 

@@ -48,14 +48,6 @@
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/drawable/ic_settings.xml"
     },
     {
-        "merged": "com.example.modernapp-merged_res-31:/layout_activity_settings.xml.flat",
-        "source": "com.example.modernapp-main-33:/layout/activity_settings.xml"
-    },
-    {
-        "merged": "com.example.modernapp-merged_res-31:/layout_item_feature.xml.flat",
-        "source": "com.example.modernapp-main-33:/layout/item_feature.xml"
-    },
-    {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/anim_fade_out.xml.flat",
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/anim/fade_out.xml"
     },
@@ -76,12 +68,12 @@
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/layout_activity_second.xml.flat",
-        "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/layout/activity_second.xml"
-    },
-    {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/layout_item_feature.xml.flat",
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/layout/item_feature.xml"
+    },
+    {
+        "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/layout_activity_second.xml.flat",
+        "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/layout/activity_second.xml"
     },
     {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/drawable_ic_dashboard.xml.flat",
@@ -100,20 +92,12 @@
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/layout/list_item.xml"
     },
     {
-        "merged": "com.example.modernapp-merged_res-31:/anim_slide_in_right.xml.flat",
-        "source": "com.example.modernapp-main-33:/anim/slide_in_right.xml"
-    },
-    {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/menu_main_menu.xml.flat",
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/menu/main_menu.xml"
     },
     {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/anim_slide_in_right.xml.flat",
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/anim/slide_in_right.xml"
-    },
-    {
-        "merged": "com.example.modernapp-merged_res-31:/menu_main_menu.xml.flat",
-        "source": "com.example.modernapp-main-33:/menu/main_menu.xml"
     },
     {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/anim_slide_out_left.xml.flat",
@@ -142,10 +126,6 @@
     {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-main-33:/mipmap-xxhdpi/ic_launcher_round.png"
-    },
-    {
-        "merged": "com.example.modernapp-merged_res-31:/anim_slide_out_left.xml.flat",
-        "source": "com.example.modernapp-main-33:/anim/slide_out_left.xml"
     },
     {
         "merged": "/home/runner/.gradle/daemon/7.5/com.example.modernapp-merged_res-31:/mipmap-xhdpi_ic_launcher_round.png.flat",
