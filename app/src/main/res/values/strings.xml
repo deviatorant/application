@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Modern App</string>
+    
+    <!-- Main Activity -->
+    <string name="home_subtitle">A modern Android application example</string>
+    <string name="enter_text_hint">Enter some text</string>
+    <string name="save_data">Save Data</string>
+    <string name="go_to_second_screen">Go to Second Screen</string>
+    <string name="navigation">Navigation</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    
+    <!-- Second Activity -->
+    <string name="second_screen">Second Screen</string>
+    <string name="second_screen_title">Welcome to the Second Screen</string>
+    <string name="second_screen_description">This is another activity in the application. Navigation between screens is implemented with proper animations and state management.</string>
+    <string name="saved_data">Saved Data</string>
+    <string name="no_data_saved">No data has been saved yet</string>
+    <string name="go_back">Go Back</string>
+    
+    <!-- Profile Activity -->
+    <string name="profile_title">Your Profile</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="bio">Bio</string>
+    <string name="save_profile">Save Profile</string>
+    
+    <!-- Settings Activity -->
+    <string name="settings_title">App Settings</string>
+    <string name="appearance">Appearance</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="enable_notifications">Enable Notifications</string>
+    <string name="clear_all_data">Clear All Data</string>
+</resources>
