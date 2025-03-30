@@ -11085,51 +11085,43 @@
     </style><style name="WindowAnimationTransition">
         <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
         <item name="android:windowExitAnimation">@anim/slide_out_left</item>
-    </style></file><file path="/home/runner/workspace/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="activity_vertical_margin">16dp</dimen><dimen name="nav_header_vertical_spacing">8dp</dimen><dimen name="nav_header_height">176dp</dimen><dimen name="fab_margin">16dp</dimen><dimen name="card_corner_radius">8dp</dimen><dimen name="card_elevation">2dp</dimen><dimen name="text_margin">16dp</dimen><dimen name="button_padding">12dp</dimen><dimen name="button_corner_radius">8dp</dimen></file><file path="/home/runner/workspace/app/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">Modern App</string><string name="welcome_message">Welcome to the Modern Android App!</string><string name="action_settings">Settings</string><string name="action_profile">Profile</string><string name="action_about">About</string><string name="hello_first_fragment">Hello first fragment</string><string name="hello_second_fragment">Hello second fragment</string><string name="profile">Profile</string><string name="settings">Settings</string><string name="about">About</string><string name="sample_description">This is a sample description. You can replace this with your own content.</string><string name="item_title">Item Title</string><string name="item_description">Item Description</string><string name="open">Open</string><string name="close">Close</string><string name="save">Save</string><string name="cancel">Cancel</string><string name="continue_text">Continue</string><string name="submit">Submit</string></file><file path="/home/runner/workspace/app/src/main/res/values/colors.xml" qualifiers=""><color name="primary">#4285F4</color><color name="primary_dark">#3367D6</color><color name="primary_light">#A1C2FA</color><color name="accent">#DB4437</color><color name="purple_200">#FFBB86FC</color><color name="purple_500">#FF6200EE</color><color name="purple_700">#FF3700B3</color><color name="teal_200">#FF03DAC5</color><color name="teal_700">#FF018786</color><color name="black">#FF000000</color><color name="white">#FFFFFFFF</color><color name="light_gray">#EEEEEE</color><color name="dark_gray">#333333</color><color name="background">#FAFAFA</color><color name="transparent">#00000000</color><color name="buttonBackground">@color/primary</color><color name="cardBackground">#FFFFFF</color><color name="buttonText">#FFFFFF</color></file><file path="/home/runner/workspace/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    </style></file><file path="/home/runner/workspace/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="activity_vertical_margin">16dp</dimen><dimen name="nav_header_vertical_spacing">8dp</dimen><dimen name="nav_header_height">176dp</dimen><dimen name="fab_margin">16dp</dimen><dimen name="card_corner_radius">8dp</dimen><dimen name="card_elevation">2dp</dimen><dimen name="text_margin">16dp</dimen><dimen name="button_padding">12dp</dimen><dimen name="button_corner_radius">8dp</dimen></file><file path="/home/runner/workspace/app/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">Modern App</string><string name="welcome_message">Welcome to Modern App</string><string name="profile">Profile</string><string name="settings">Settings</string><string name="sample_description">This is a sample description for demonstrating text in the material card layout.</string><string name="save">Save</string><string name="cancel">Cancel</string><string name="back">Back</string><string name="click_me">Click Me</string><string name="second_screen">Second Screen</string><string name="feature_icon">Feature Icon</string><string name="home">Home</string><string name="action_settings">Settings</string><string name="action_about">About</string></file><file path="/home/runner/workspace/app/src/main/res/values/colors.xml" qualifiers=""><color name="primary">#4CAF50</color><color name="accent">#8BC34A</color><color name="black">#000000</color><color name="white">#FFFFFF</color><color name="background">#F5F5F5</color><color name="cardBackground">#FFFFFF</color><color name="textPrimary">#212121</color><color name="textSecondary">#757575</color><color name="divider">#BDBDBD</color><color name="error">#F44336</color><color name="primaryDark">#388E3C</color><color name="success">#4CAF50</color><color name="warning">#FF9800</color><color name="info">#2196F3</color><color name="purple_700">#3700B3</color><color name="buttonBackground">@color/primary</color><color name="teal_700">#018786</color><color name="purple_500">#6200EE</color><color name="teal_200">#03DAC5</color><color name="buttonText">@color/white</color><color name="purple_200">#BB86FC</color><color name="ripple">#33000000</color></file><file path="/home/runner/workspace/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/background</item>
-        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
     </style><style name="Text"/><style name="Text.Title">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/dark_gray</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:padding">16dp</item>
-    </style><style name="Text.Subtitle">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/dark_gray</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textStyle">bold</item>
     </style><style name="Text.Body">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/dark_gray</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style><style name="Card">
-        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="cardUseCompatPadding">true</item>
-        <item name="cardPreventCornerOverlap">true</item>
-        <item name="contentPadding">16dp</item>
-    </style><style name="Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:padding">@dimen/button_padding</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="cornerRadius">@dimen/button_corner_radius</item>
-    </style><style name="Button.Primary">
-        <item name="android:backgroundTint">@color/primary</item>
-        <item name="android:textColor">@color/white</item>
-    </style><style name="Button.Secondary">
-        <item name="android:backgroundTint">@color/accent</item>
-        <item name="android:textColor">@color/white</item>
-    </style><style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:padding">@dimen/button_padding</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="cornerRadius">@dimen/button_corner_radius</item>
-        <item name="strokeColor">@color/primary</item>
-        <item name="android:textColor">@color/primary</item>
-    </style><style name="NavigationDrawerStyle">
         <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:listDivider">@color/light_gray</item>
+        <item name="android:textColor">@color/textSecondary</item>
+    </style><style name="Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="contentPadding">16dp</item>
+        <item name="cardBackgroundColor">@color/cardBackground</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style><style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">12dp</item>
+    </style><style name="Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style><style name="Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/accent</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textAllCaps">false</item>
+    </style><style name="Text.Headline">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">16dp</item>
     </style></file><file name="ic_home" path="/home/runner/workspace/app/src/main/res/drawable/ic_home.xml" qualifiers="" type="drawable"/><file name="ic_dashboard" path="/home/runner/workspace/app/src/main/res/drawable/ic_dashboard.xml" qualifiers="" type="drawable"/><file name="ic_profile" path="/home/runner/workspace/app/src/main/res/drawable/ic_profile.xml" qualifiers="" type="drawable"/><file name="ic_settings" path="/home/runner/workspace/app/src/main/res/drawable/ic_settings.xml" qualifiers="" type="drawable"/><file name="ic_launcher_background" path="/home/runner/workspace/app/src/main/res/drawable/ic_launcher_background.xml" qualifiers="" type="drawable"/><file name="ic_launcher_foreground" path="/home/runner/workspace/app/src/main/res/drawable/ic_launcher_foreground.xml" qualifiers="" type="drawable"/><file name="ripple_effect" path="/home/runner/workspace/app/src/main/res/drawable/ripple_effect.xml" qualifiers="" type="drawable"/><file name="card_background" path="/home/runner/workspace/app/src/main/res/drawable/card_background.xml" qualifiers="" type="drawable"/><file name="rounded_button" path="/home/runner/workspace/app/src/main/res/drawable/rounded_button.xml" qualifiers="" type="drawable"/><file name="slide_in_left" path="/home/runner/workspace/app/src/main/res/anim/slide_in_left.xml" qualifiers="" type="anim"/><file name="slide_out_right" path="/home/runner/workspace/app/src/main/res/anim/slide_out_right.xml" qualifiers="" type="anim"/><file name="fade_in" path="/home/runner/workspace/app/src/main/res/anim/fade_in.xml" qualifiers="" type="anim"/><file name="fade_out" path="/home/runner/workspace/app/src/main/res/anim/fade_out.xml" qualifiers="" type="anim"/><file name="slide_in_right" path="/home/runner/workspace/app/src/main/res/anim/slide_in_right.xml" qualifiers="" type="anim"/><file name="slide_out_left" path="/home/runner/workspace/app/src/main/res/anim/slide_out_left.xml" qualifiers="" type="anim"/><file name="ic_launcher" path="/home/runner/workspace/app/src/main/res/mipmap-hdpi/ic_launcher.png" qualifiers="hdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="/home/runner/workspace/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" qualifiers="hdpi-v4" type="mipmap"/><file name="ic_launcher" path="/home/runner/workspace/app/src/main/res/mipmap-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="/home/runner/workspace/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" qualifiers="mdpi-v4" type="mipmap"/><file name="ic_launcher" path="/home/runner/workspace/app/src/main/res/mipmap-xhdpi/ic_launcher.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="/home/runner/workspace/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" qualifiers="xhdpi-v4" type="mipmap"/><file name="ic_launcher" path="/home/runner/workspace/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" qualifiers="xxhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="/home/runner/workspace/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" qualifiers="xxhdpi-v4" type="mipmap"/><file name="ic_launcher" path="/home/runner/workspace/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" qualifiers="xxxhdpi-v4" type="mipmap"/><file name="ic_launcher_round" path="/home/runner/workspace/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" qualifiers="xxxhdpi-v4" type="mipmap"/><file path="/home/runner/workspace/app/src/main/res/values-night/themes.xml" qualifiers="night-v8"><style name="Theme.ModernApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_200</item>
@@ -11157,7 +11149,7 @@
         <item name="cardElevation">4dp</item>
         <item name="contentPadding">16dp</item>
         <item name="cardUseCompatPadding">true</item>
-    </style></file><file name="menu_main" path="/home/runner/workspace/app/src/main/res/menu/menu_main.xml" qualifiers="" type="menu"/><file name="main_menu" path="/home/runner/workspace/app/src/main/res/menu/main_menu.xml" qualifiers="" type="menu"/></source><source path="/home/runner/workspace/app/build/generated/res/rs/debug"/><source path="/home/runner/workspace/app/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/runner/workspace/app/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/runner/workspace/app/src/debug/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog">
+    </style></file><file name="menu_main" path="/home/runner/workspace/app/src/main/res/menu/menu_main.xml" qualifiers="" type="menu"/><file name="main_menu" path="/home/runner/workspace/app/src/main/res/menu/main_menu.xml" qualifiers="" type="menu"/><file path="/home/runner/workspace/app/src/main/res/values-fr/strings.xml" qualifiers="fr"><string name="app_name">Application Moderne</string><string name="welcome_message">Bienvenue dans l\'Application Moderne</string><string name="feature_icon">Icône de fonctionnalité</string><string name="back">Retour</string><string name="sample_description">Ceci est une description d\'exemple pour démontrer le texte dans la mise en page de la carte matérielle.</string><string name="profile">Profil</string><string name="settings">Paramètres</string><string name="home">Accueil</string><string name="second_screen">Deuxième Écran</string><string name="click_me">Cliquez-moi</string><string name="save">Enregistrer</string><string name="cancel">Annuler</string><string name="action_about">À propos</string><string name="action_settings">Paramètres</string></file><file path="/home/runner/workspace/app/src/main/res/values-night/colors.xml" qualifiers="night-v8"><color name="primary">#388E3C</color><color name="primaryDark">#1B5E20</color><color name="accent">#69F0AE</color><color name="textPrimary">#FFFFFF</color><color name="textSecondary">#B3FFFFFF</color><color name="divider">#1FFFFFFF</color><color name="background">#121212</color><color name="cardBackground">#1F1F1F</color><color name="buttonText">#FFFFFF</color><color name="buttonBackground">#388E3C</color><color name="purple_200">#BB86FC</color><color name="purple_500">#6200EE</color><color name="purple_700">#3700B3</color><color name="teal_200">#03DAC5</color><color name="teal_700">#018786</color><color name="ripple">#33FFFFFF</color></file></source><source path="/home/runner/workspace/app/build/generated/res/rs/debug"/><source path="/home/runner/workspace/app/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/runner/workspace/app/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/runner/workspace/app/src/debug/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog">
         <attr name="android:layout"/>
         <attr format="reference" name="buttonPanelSideLayout"/>
         <attr format="reference" name="listLayout"/>

@@ -22,7 +22,7 @@
 15-->[androidx.core:core:1.9.0] /home/runner/.gradle/caches/transforms-3/8b6bccf8b9259cbe873ef42ee896a362/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/home/runner/workspace/app/src/main/AndroidManifest.xml:5:5-33:19
+17-->/home/runner/workspace/app/src/main/AndroidManifest.xml:5:5-29:19
 18        android:allowBackup="true"
 18-->/home/runner/workspace/app/src/main/AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -39,40 +39,40 @@
 25        android:theme="@style/AppTheme" >
 25-->/home/runner/workspace/app/src/main/AndroidManifest.xml:11:9-40
 26        <activity
-26-->/home/runner/workspace/app/src/main/AndroidManifest.xml:13:9-20:20
+26-->/home/runner/workspace/app/src/main/AndroidManifest.xml:12:9-19:20
 27            android:name="com.example.modernapp.MainActivity"
-27-->/home/runner/workspace/app/src/main/AndroidManifest.xml:14:13-41
+27-->/home/runner/workspace/app/src/main/AndroidManifest.xml:13:13-41
 28            android:exported="true" >
-28-->/home/runner/workspace/app/src/main/AndroidManifest.xml:15:13-36
+28-->/home/runner/workspace/app/src/main/AndroidManifest.xml:14:13-36
 29            <intent-filter>
-29-->/home/runner/workspace/app/src/main/AndroidManifest.xml:16:13-19:29
+29-->/home/runner/workspace/app/src/main/AndroidManifest.xml:15:13-18:29
 30                <action android:name="android.intent.action.MAIN" />
-30-->/home/runner/workspace/app/src/main/AndroidManifest.xml:17:17-69
-30-->/home/runner/workspace/app/src/main/AndroidManifest.xml:17:25-66
+30-->/home/runner/workspace/app/src/main/AndroidManifest.xml:16:17-69
+30-->/home/runner/workspace/app/src/main/AndroidManifest.xml:16:25-66
 31
 32                <category android:name="android.intent.category.LAUNCHER" />
-32-->/home/runner/workspace/app/src/main/AndroidManifest.xml:18:17-77
-32-->/home/runner/workspace/app/src/main/AndroidManifest.xml:18:27-74
+32-->/home/runner/workspace/app/src/main/AndroidManifest.xml:17:17-77
+32-->/home/runner/workspace/app/src/main/AndroidManifest.xml:17:27-74
 33            </intent-filter>
 34        </activity>
 35        <activity
-35-->/home/runner/workspace/app/src/main/AndroidManifest.xml:22:9-24:58
+35-->/home/runner/workspace/app/src/main/AndroidManifest.xml:20:9-22:40
 36            android:name="com.example.modernapp.SecondActivity"
-36-->/home/runner/workspace/app/src/main/AndroidManifest.xml:23:13-43
-37            android:parentActivityName="com.example.modernapp.MainActivity" />
-37-->/home/runner/workspace/app/src/main/AndroidManifest.xml:24:13-55
+36-->/home/runner/workspace/app/src/main/AndroidManifest.xml:21:13-43
+37            android:exported="false" />
+37-->/home/runner/workspace/app/src/main/AndroidManifest.xml:22:13-37
 38        <activity
-38-->/home/runner/workspace/app/src/main/AndroidManifest.xml:26:9-28:58
+38-->/home/runner/workspace/app/src/main/AndroidManifest.xml:23:9-25:40
 39            android:name="com.example.modernapp.ProfileActivity"
-39-->/home/runner/workspace/app/src/main/AndroidManifest.xml:27:13-44
-40            android:parentActivityName="com.example.modernapp.MainActivity" />
-40-->/home/runner/workspace/app/src/main/AndroidManifest.xml:28:13-55
+39-->/home/runner/workspace/app/src/main/AndroidManifest.xml:24:13-44
+40            android:exported="false" />
+40-->/home/runner/workspace/app/src/main/AndroidManifest.xml:25:13-37
 41        <activity
-41-->/home/runner/workspace/app/src/main/AndroidManifest.xml:30:9-32:58
+41-->/home/runner/workspace/app/src/main/AndroidManifest.xml:26:9-28:40
 42            android:name="com.example.modernapp.SettingsActivity"
-42-->/home/runner/workspace/app/src/main/AndroidManifest.xml:31:13-45
-43            android:parentActivityName="com.example.modernapp.MainActivity" />
-43-->/home/runner/workspace/app/src/main/AndroidManifest.xml:32:13-55
+42-->/home/runner/workspace/app/src/main/AndroidManifest.xml:27:13-45
+43            android:exported="false" />
+43-->/home/runner/workspace/app/src/main/AndroidManifest.xml:28:13-37
 44
 45        <provider
 45-->[androidx.emoji2:emoji2:1.2.0] /home/runner/.gradle/caches/transforms-3/f0a6842a932ad76bb6eb44e555eed77e/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20

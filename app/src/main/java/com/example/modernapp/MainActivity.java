@@ -1,25 +1,21 @@
 package com.example.modernapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FeatureAdapter.OnFeatureClickListener {
 
     private RecyclerView featuresRecyclerView;
-    private FeatureAdapter featureAdapter;
-    private List<Feature> featureList;
+    private List<Feature> features;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,79 +26,69 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Initialize welcome text
-        TextView welcomeTextView = findViewById(R.id.welcomeTextView);
-        welcomeTextView.setText(R.string.welcome_message);
-
-        // Initialize RecyclerView
+        // Set up RecyclerView
         featuresRecyclerView = findViewById(R.id.featuresRecyclerView);
-        featuresRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Create feature list
-        initFeatureList();
-
-        // Set up adapter
-        featureAdapter = new FeatureAdapter(this, featureList);
-        featuresRecyclerView.setAdapter(featureAdapter);
+        setupFeaturesList();
     }
 
-    private void initFeatureList() {
-        featureList = new ArrayList<>();
-
-        // Add features with their respective icons and target activities
-        featureList.add(new Feature(
-                "Profile",
-                "View and edit your profile information",
-                android.R.drawable.ic_menu_myplaces,
-                ProfileActivity.class));
-
-        featureList.add(new Feature(
+    /**
+     * Sets up the features list with data
+     */
+    private void setupFeaturesList() {
+        features = new ArrayList<>();
+        
+        // Add sample features
+        features.add(new Feature(
+                android.R.drawable.ic_menu_manage,
                 "Settings",
-                "Customize app settings and preferences",
-                android.R.drawable.ic_menu_preferences,
-                SettingsActivity.class));
-
-        featureList.add(new Feature(
-                "Theme Options",
-                "Change the appearance of the app",
-                android.R.drawable.ic_menu_gallery,
-                SettingsActivity.class));
-
-        featureList.add(new Feature(
-                "Notifications",
-                "Manage your notification preferences",
-                android.R.drawable.ic_popup_reminder,
-                SettingsActivity.class));
-
-        featureList.add(new Feature(
-                "About",
-                "Learn more about this application",
+                "Configure application settings",
+                SettingsActivity.class
+        ));
+        
+        features.add(new Feature(
                 android.R.drawable.ic_menu_info_details,
-                SettingsActivity.class));
+                "Second Screen Demo",
+                "View a demonstration of navigation to another screen",
+                SecondActivity.class
+        ));
+        
+        features.add(new Feature(
+                android.R.drawable.ic_menu_myplaces,
+                "User Profile",
+                "View and edit your profile information",
+                ProfileActivity.class
+        ));
+
+        // Set up the adapter
+        FeatureAdapter adapter = new FeatureAdapter(this, features, this);
+        featuresRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onFeatureClick(Feature feature, int position) {
+        // Handle feature click by navigating to the specified activity
+        Utils.navigateToWithAnimation(this, feature.getTargetActivity());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
+        
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            Utils.navigateToWithAnimation(this, SettingsActivity.class);
             return true;
-        } else if (id == R.id.action_profile) {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.action_about) {
+            // Display about information
+            Utils.showAboutDialog(this);
             return true;
         }
-
+        
         return super.onOptionsItemSelected(item);
     }
 }

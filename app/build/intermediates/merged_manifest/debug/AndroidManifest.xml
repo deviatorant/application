@@ -34,13 +34,13 @@
         </activity>
         <activity
             android:name="com.example.modernapp.SecondActivity"
-            android:parentActivityName="com.example.modernapp.MainActivity" />
+            android:exported="false" />
         <activity
             android:name="com.example.modernapp.ProfileActivity"
-            android:parentActivityName="com.example.modernapp.MainActivity" />
+            android:exported="false" />
         <activity
             android:name="com.example.modernapp.SettingsActivity"
-            android:parentActivityName="com.example.modernapp.MainActivity" />
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

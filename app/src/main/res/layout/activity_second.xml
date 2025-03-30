@@ -33,25 +33,18 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/secondScreenTitle"
+                style="@style/Text.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Headline"
-                tools:text="Welcome to the Second Screen" />
-
-            <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/Text.Body"
-                tools:text="This is the second screen of our modern Android app. It demonstrates navigation between multiple activities with animations." />
+                android:gravity="center"
+                android:text="Second Screen Content" />
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,40 +54,26 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Feature Details"
+                        android:text="Sample Content"
                         android:textAppearance="@style/Text.Title" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="This card demonstrates Material Design components and styling in our app."
+                        android:text="@string/sample_description"
                         android:textAppearance="@style/Text.Body" />
 
-                    <Button
-                        android:id="@+id/actionButton"
-                        style="@style/Button.Primary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/back" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="24dp"
-                android:contentDescription="Sample Image"
-                android:scaleType="centerCrop"
-                android:src="@android:drawable/sym_def_app_icon" />
-
-            <TextView
+            <Button
+                android:id="@+id/backButton"
+                style="@style/Button.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Additional information can be displayed here. The scroll view allows for content that exceeds the screen size."
-                android:textAppearance="@style/Text.Body" />
+                android:layout_marginTop="24dp"
+                android:text="@string/back" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,7 +1,6 @@
 package com.example.modernapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,54 +8,56 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 /**
- * Adapter for displaying a list of features in a RecyclerView
+ * Adapter for displaying features in a RecyclerView
  */
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureViewHolder> {
 
     private List<Feature> features;
     private Context context;
+    private OnFeatureClickListener listener;
 
     /**
-     * Constructor for FeatureAdapter
-     *
-     * @param context  The context
-     * @param features The list of features to display
+     * Interface for click events on features
      */
-    public FeatureAdapter(Context context, List<Feature> features) {
+    public interface OnFeatureClickListener {
+        void onFeatureClick(Feature feature, int position);
+    }
+
+    /**
+     * Constructs a new FeatureAdapter
+     *
+     * @param context  the context
+     * @param features the list of features
+     * @param listener the click listener
+     */
+    public FeatureAdapter(Context context, List<Feature> features, OnFeatureClickListener listener) {
         this.context = context;
         this.features = features;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public FeatureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_feature, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_feature, parent, false);
         return new FeatureViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FeatureViewHolder holder, int position) {
         Feature feature = features.get(position);
-        holder.titleTextView.setText(feature.getTitle());
-        holder.descriptionTextView.setText(feature.getDescription());
-        holder.iconImageView.setImageResource(feature.getIconResId());
+        holder.imageViewItem.setImageResource(feature.getIconResourceId());
+        holder.textViewTitle.setText(feature.getTitle());
+        holder.textViewDescription.setText(feature.getDescription());
 
-        // Set click listener to launch the corresponding activity
-        holder.cardView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, feature.getActivityClass());
-            context.startActivity(intent);
-            
-            // If the context is an activity, apply custom animation
-            if (context instanceof MainActivity) {
-                ((MainActivity) context).overridePendingTransition(
-                        R.anim.slide_in_right, R.anim.slide_out_left);
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFeatureClick(feature, position);
             }
         });
     }
@@ -69,18 +70,16 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
     /**
      * ViewHolder for feature items
      */
-    static class FeatureViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        ImageView iconImageView;
-        TextView titleTextView;
-        TextView descriptionTextView;
+    public static class FeatureViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageViewItem;
+        TextView textViewTitle;
+        TextView textViewDescription;
 
-        FeatureViewHolder(View itemView) {
+        public FeatureViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.featureCardView);
-            iconImageView = itemView.findViewById(R.id.featureIconImageView);
-            titleTextView = itemView.findViewById(R.id.featureTitleTextView);
-            descriptionTextView = itemView.findViewById(R.id.featureDescriptionTextView);
+            imageViewItem = itemView.findViewById(R.id.imageViewItem);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewDescription = itemView.findViewById(R.id.textViewDescription);
         }
     }
 }

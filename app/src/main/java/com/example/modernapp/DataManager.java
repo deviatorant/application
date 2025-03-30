@@ -1,146 +1,112 @@
 package com.example.modernapp;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
- * DataManager class to manage app data
- * Singleton pattern implementation for global data access
+ * Data manager class for handling app preferences and data
  */
 public class DataManager {
-    // Singleton instance
+    private static final String PREF_NAME = "modern_app_prefs";
+    private static final String KEY_NOTIFICATIONS_ENABLED = "notifications_enabled";
+    private static final String KEY_DARK_MODE_ENABLED = "dark_mode_enabled";
+    private static final String KEY_USER_NAME = "user_name";
+    private static final String KEY_USER_EMAIL = "user_email";
+
     private static DataManager instance;
-    
-    // Data storage
-    private List<ItemModel> itemList;
-    private String userName;
-    private String userEmail;
-    private String userBio;
-    private boolean darkThemeEnabled;
-    private boolean notificationsEnabled;
-    private boolean soundEnabled;
-    
-    // Private constructor for Singleton pattern
-    private DataManager() {
-        // Initialize with default data
-        itemList = new ArrayList<>();
-        populateDefaultItems();
-        
-        // Default user settings
-        userName = "";
-        userEmail = "";
-        userBio = "";
-        darkThemeEnabled = false;
-        notificationsEnabled = true;
-        soundEnabled = true;
+    private final SharedPreferences preferences;
+
+    /**
+     * Private constructor
+     *
+     * @param context application context
+     */
+    private DataManager(Context context) {
+        preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
-    
-    // Get Singleton instance
-    public static synchronized DataManager getInstance() {
+
+    /**
+     * Gets the singleton instance
+     *
+     * @param context application context
+     * @return the DataManager instance
+     */
+    public static synchronized DataManager getInstance(Context context) {
         if (instance == null) {
-            instance = new DataManager();
+            instance = new DataManager(context.getApplicationContext());
         }
         return instance;
     }
-    
-    // Populate with default items for the list
-    private void populateDefaultItems() {
-        itemList.add(new ItemModel("Item 1", "This is the first item in our modern Android app.", android.R.drawable.ic_menu_compass));
-        itemList.add(new ItemModel("Item 2", "A beautifully designed application with modern UI elements.", android.R.drawable.ic_menu_gallery));
-        itemList.add(new ItemModel("Item 3", "Uses RecyclerView with custom adapter for efficient list display.", android.R.drawable.ic_menu_slideshow));
-        itemList.add(new ItemModel("Item 4", "Material Design components for a cohesive user experience.", android.R.drawable.ic_menu_view));
-        itemList.add(new ItemModel("Item 5", "Data management through singleton pattern for global access.", android.R.drawable.ic_menu_info_details));
+
+    /**
+     * Saves whether notifications are enabled
+     *
+     * @param enabled true if enabled, false otherwise
+     */
+    public void setNotificationsEnabled(boolean enabled) {
+        preferences.edit().putBoolean(KEY_NOTIFICATIONS_ENABLED, enabled).apply();
     }
-    
-    // Get all items
-    public List<ItemModel> getItems() {
-        return itemList;
+
+    /**
+     * Checks if notifications are enabled
+     *
+     * @return true if notifications are enabled, false otherwise
+     */
+    public boolean areNotificationsEnabled() {
+        return preferences.getBoolean(KEY_NOTIFICATIONS_ENABLED, true);
     }
-    
-    // Add a new item
-    public void addItem(ItemModel item) {
-        itemList.add(item);
+
+    /**
+     * Saves whether dark mode is enabled
+     *
+     * @param enabled true if enabled, false otherwise
+     */
+    public void setDarkModeEnabled(boolean enabled) {
+        preferences.edit().putBoolean(KEY_DARK_MODE_ENABLED, enabled).apply();
     }
-    
-    // Remove an item
-    public void removeItem(int position) {
-        if (position >= 0 && position < itemList.size()) {
-            itemList.remove(position);
-        }
+
+    /**
+     * Checks if dark mode is enabled
+     *
+     * @return true if dark mode is enabled, false otherwise
+     */
+    public boolean isDarkModeEnabled() {
+        return preferences.getBoolean(KEY_DARK_MODE_ENABLED, false);
     }
-    
-    // User profile methods
+
+    /**
+     * Saves the user name
+     *
+     * @param name the user name
+     */
+    public void setUserName(String name) {
+        preferences.edit().putString(KEY_USER_NAME, name).apply();
+    }
+
+    /**
+     * Gets the user name
+     *
+     * @return the user name, or a default value if not set
+     */
     public String getUserName() {
-        return userName;
+        return preferences.getString(KEY_USER_NAME, "John Doe");
     }
-    
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    /**
+     * Saves the user email
+     *
+     * @param email the user email
+     */
+    public void setUserEmail(String email) {
+        preferences.edit().putString(KEY_USER_EMAIL, email).apply();
     }
-    
+
+    /**
+     * Gets the user email
+     *
+     * @return the user email, or a default value if not set
+     */
     public String getUserEmail() {
-        return userEmail;
-    }
-    
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-    
-    public String getUserBio() {
-        return userBio;
-    }
-    
-    public void setUserBio(String userBio) {
-        this.userBio = userBio;
-    }
-    
-    // Settings methods
-    public boolean isDarkThemeEnabled() {
-        return darkThemeEnabled;
-    }
-    
-    public void setDarkThemeEnabled(boolean darkThemeEnabled) {
-        this.darkThemeEnabled = darkThemeEnabled;
-    }
-    
-    public boolean isNotificationsEnabled() {
-        return notificationsEnabled;
-    }
-    
-    public void setNotificationsEnabled(boolean notificationsEnabled) {
-        this.notificationsEnabled = notificationsEnabled;
-    }
-    
-    public boolean isSoundEnabled() {
-        return soundEnabled;
-    }
-    
-    public void setSoundEnabled(boolean soundEnabled) {
-        this.soundEnabled = soundEnabled;
-    }
-    
-    // Inner class for item data model
-    public static class ItemModel {
-        private String title;
-        private String description;
-        private int iconResource;
-        
-        public ItemModel(String title, String description, int iconResource) {
-            this.title = title;
-            this.description = description;
-            this.iconResource = iconResource;
-        }
-        
-        public String getTitle() {
-            return title;
-        }
-        
-        public String getDescription() {
-            return description;
-        }
-        
-        public int getIconResource() {
-            return iconResource;
-        }
+        return preferences.getString(KEY_USER_EMAIL, "john.doe@example.com");
     }
 }
