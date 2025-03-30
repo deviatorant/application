@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Application Moderne</string>
+    <string name="welcome_message">Bienvenue dans l\'Application Moderne</string>
+    <string name="feature_icon">Icône de fonctionnalité</string>
+    <string name="back">Retour</string>
+    <string name="sample_description">Ceci est une description d\'exemple pour démontrer le texte dans la mise en page de la carte matérielle.</string>
+    <string name="profile">Profil</string>
+    <string name="settings">Paramètres</string>
+    <string name="home">Accueil</string>
+    <string name="second_screen">Deuxième Écran</string>
+    <string name="click_me">Cliquez-moi</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="action_about">À propos</string>
+</resources>

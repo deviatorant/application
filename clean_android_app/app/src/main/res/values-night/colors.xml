@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#388E3C</color>
+    <color name="primaryDark">#1B5E20</color>
+    <color name="accent">#69F0AE</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#B3FFFFFF</color>
+    <color name="divider">#1FFFFFFF</color>
+    <color name="background">#121212</color>
+    <color name="cardBackground">#1F1F1F</color>
+    <color name="buttonText">#FFFFFF</color>
+    <color name="buttonBackground">#388E3C</color>
+    <color name="ripple">#33FFFFFF</color>
+    
+    <!-- Required material design colors -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+</resources>
